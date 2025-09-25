@@ -7,8 +7,9 @@ import (
 )
 
 type AppConfig struct {
-	Type     string `mapstructure:"type"`      // "json" | "memory" (GORM plus tard)
-	JSONPath string `mapstructure:"json_path"` // e.g. data/contacts.json
+	Type     string `mapstructure:"type"`      // "gorm" | "json" | "memory"
+	JSONPath string `mapstructure:"json_path"` // ex: data/contacts.json
+	DBPath   string `mapstructure:"db_path"`   // ex: data/crm.db
 }
 
 func Load(path string) (*AppConfig, error) {
@@ -19,6 +20,7 @@ func Load(path string) (*AppConfig, error) {
 	// défauts
 	v.SetDefault("type", "memory")
 	v.SetDefault("json_path", "data/contacts.json")
+	v.SetDefault("db_path", "data/crm.db")
 
 	if err := v.ReadInConfig(); err != nil {
 		return nil, fmt.Errorf("read config: %w", err)

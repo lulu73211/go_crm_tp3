@@ -1,2 +1,3 @@
-type: json
+type: gorm
+db_path: data/crm.db
 json_path: data/contacts.json
