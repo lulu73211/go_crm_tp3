@@ -1,0 +1,13 @@
+{
+  "next_id": 3,
+  "items": [
+    {
+      "ID": 1,
+      "Name": "Jeanne Doe",
+      "Email": "jeanne@example.com",
+      "Phone": "0612345678",
+      "CreatedAt": "0001-01-01T00:00:00Z",
+      "UpdatedAt": "0001-01-01T00:00:00Z"
+    }
+  ]
+}

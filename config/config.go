@@ -7,7 +7,8 @@ import (
 )
 
 type AppConfig struct {
-	Type string `mapstructure:"type"` // "memory" (pour l’instant)
+	Type     string `mapstructure:"type"`      // "json" | "memory" (GORM plus tard)
+	JSONPath string `mapstructure:"json_path"` // e.g. data/contacts.json
 }
 
 func Load(path string) (*AppConfig, error) {
@@ -15,8 +16,9 @@ func Load(path string) (*AppConfig, error) {
 	v.SetConfigFile(path)
 	v.SetConfigType("yaml")
 
-	// valeurs par défaut
+	// défauts
 	v.SetDefault("type", "memory")
+	v.SetDefault("json_path", "data/contacts.json")
 
 	if err := v.ReadInConfig(); err != nil {
 		return nil, fmt.Errorf("read config: %w", err)
